@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="helloWorld" class="com.keepthinker.HelloWorld" scope="singleton"
+		init-method="init" destroy-method="destroy">
+		<property name="message1" value="Sean Ke" />
+		<property name="message2" value="keepthinker" />
+	</bean>
+	<bean id="helloChina" class="com.keepthinker.HelloChina" scope="prototype">
+		<property name="message1" value="Sean Ke" />
+		<property name="message2" value="keepthinker" />
+		<property name="message3" value="china" />
+	</bean>
+	<bean class="com.keepthinker.InitHelloWorld" />
+
+</beans>
