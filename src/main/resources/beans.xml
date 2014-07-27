@@ -2,19 +2,56 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+    >
+	<context:annotation-config />
 	<bean id="helloWorld" class="com.keepthinker.HelloWorld" scope="singleton"
 		init-method="init" destroy-method="destroy">
 		<property name="message1" value="Sean Ke" />
 		<property name="message2" value="keepthinker" />
 	</bean>
-	<bean id="helloChina" class="com.keepthinker.HelloChina" scope="prototype">
+	<bean id="helloChina" class="com.keepthinker.HelloChina" scope="prototype"
+		parent="helloWorld" > <!-- autowire="byName" --><!-- byType also works -->
+		<constructor-arg index="0" ref="beijing" />
+		<constructor-arg index="1">
+			<bean class="com.keepthinker.President"
+			    p:name="Xi Jinping"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<list>
+				<value>Fujian</value>
+				<value>Guangdong</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<map>
+				<entry key="bj" value="Beijing" />
+				<entry key="sh" value="Shanghai" />
+				<entry key="cq" value="Chongqing" />
+			</map>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<props>
+				<prop key="one">north</prop>
+				<prop key="two">south</prop>
+			</props>
+		</constructor-arg>
 		<property name="message1" value="Sean Ke" />
-		<property name="message2" value="keepthinker" />
 		<property name="message3" value="china" />
 	</bean>
-	<bean class="com.keepthinker.InitHelloWorld" />
+	<bean class="com.keepthinker.InitHelloClass" />
+
+	<bean id="people" class="com.keepthinker.People" p:population="1300000000" />
+	<bean id="people1" class="com.keepthinker.People" p:population="1400000000" />
+	<bean id="beijing" class="com.keepthinker.Capital">
+		<constructor-arg index="0" type="String" value="Beijing" />
+		<constructor-arg index="1" type="int" value="1" />
+	</bean>
 
 </beans>
