@@ -14,8 +14,6 @@ public class HelloController{
 	private Logger logger=Logger.getLogger(HelloController.class);
 	@RequestMapping(method=RequestMethod.GET)
 	public String presentHello(ModelMap map){
-//		System.out.println("asdf");
-		
 		AbstractApplicationContext context= new ClassPathXmlApplicationContext("beans.xml");
 		HelloWorld hello=(HelloWorld)context.getBean("helloWorld");
 		logger.debug(hello.getMessage1());	

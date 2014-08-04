@@ -16,17 +16,17 @@ public class HelloChina {
 	private String message3;
 	private Capital capital;
 	private President president;
-	private List<String> provices;
+	private String[] provinces;//List<String
 	private Map<String,String> specialAreas;
 	private Properties regions;
 	private People people;
 	public HelloChina(Capital capital, President president,
-			List<String> provices, Map<String, String> specialAreas,
+			String[] provices, Map<String, String> specialAreas,
 			Properties regions) {
 		super();
 		this.capital = capital;
 		this.president = president;
-		this.provices = provices;
+		this.provinces = provices;
 		this.specialAreas = specialAreas;
 		this.regions = regions;
 	}
@@ -78,12 +78,12 @@ public class HelloChina {
 		this.message3 = message3;
 	}
 
-	public List<String> getProvices() {
-		return provices;
+	public String[] getProvinces() {
+		return provinces;
 	}
 
-	public void setProvices(List<String> provices) {
-		this.provices = provices;
+	public void setProvices(String[] provices) {
+		this.provinces = provices;
 	}
 
 	public Map<String, String> getSpecialAreas() {
