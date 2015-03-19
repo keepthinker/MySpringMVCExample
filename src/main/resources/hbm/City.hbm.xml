@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.keepthinker.dao.entity.City"
+           table="city">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="Name" not-null="false" />
+        </property>
+
+        <property name="countryCode" type="string">
+            <column name="CountryCode" not-null="false" />
+        </property>
+
+        <property name="district" type="string">
+            <column name="District" not-null="false" />
+        </property>
+
+        <property name="population" type="int">
+            <column name="Population" not-null="false" />
+        </property>
+    </class>
+</hibernate-mapping>
